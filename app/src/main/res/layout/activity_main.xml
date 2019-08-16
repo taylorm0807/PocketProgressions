@@ -10,23 +10,55 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight=".01"
+        android:layout_gravity="center"
+        android:textSize="40sp"
+        android:text="@string/key_generator"
+        android:textAlignment="center"
+        android:textColor="@color/textColor">
+
+    </TextView>
+
+    <Spinner
+        android:id="@+id/KeySpinner"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".1"
-        android:layout_marginTop="12dp"
-        android:textSize="32sp"
-        android:text="@string/key_generator"
-        android:textColor="@color/textColor"
+        android:layout_weight=".07"
+        android:layout_marginTop="16dp"
+        android:minWidth="200dp"
         android:background="@drawable/card"
-        >
-    </TextView>
+        android:entries="@array/keys" />
+
+    <CheckBox
+        android:id="@+id/MajorMinorCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight=".075"
+        android:background="@drawable/card"
+        android:textColor="@color/textColor"
+        android:text="@string/minor_key">
+    </CheckBox>
+
+    <Button
+        android:id="@+id/ConfirmationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight=".075"
+        android:background="@drawable/card"
+        android:textColor="@color/textColor"
+        android:text="@string/create_key" />
+
 
     <TextView
         android:id="@+id/KeyHeader"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".08"
-        android:layout_marginTop="16dp"
+        android:layout_weight=".1"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="12dp"
         android:textSize="30sp"
         android:text=" Chords in C Major: "
@@ -38,7 +70,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".14"
+        android:layout_weight=".15"
         android:orientation="horizontal">
         <Button
             android:id="@+id/ChordButton1"
@@ -80,8 +112,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".14"
-        android:layout_marginTop="8dp"
+        android:layout_weight=".15"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         >
         <Button
@@ -127,7 +159,7 @@
         android:layout_height="0dp"
         android:layout_weight=".1"
         android:layout_marginTop="12dp"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:text="@string/chord_info"
         android:textColor="@color/textColor"
         android:background="@drawable/highlighted_card"
@@ -136,10 +168,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight=".2"
+        android:layout_weight=".25"
         android:minWidth="250dp"
         android:orientation="vertical"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/highlighted_card"
         >
         <TextView
@@ -165,42 +197,12 @@
         </TextView>
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/KeySpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".07"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/card"
-        android:entries="@array/keys" />
-
-        <CheckBox
-            android:id="@+id/MajorMinorCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight=".075"
-            android:background="@drawable/card"
-            android:textColor="@color/textColor"
-            android:text="@string/minor_key">
-        </CheckBox>
-
-    <Button
-        android:id="@+id/ConfirmationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_weight=".075"
-        android:background="@drawable/card"
-        android:textColor="@color/textColor"
-        android:text="@string/create_key" />
-
     <Button
         android:id="@+id/ContinueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="30dp"
         android:textColor="@color/textColor"
         android:background="@drawable/card"
