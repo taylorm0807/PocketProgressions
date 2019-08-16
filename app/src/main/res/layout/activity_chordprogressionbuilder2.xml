@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".chordprogressionbuilder2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".185"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ChordButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+
+        <Button
+            android:id="@+id/ChordButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+
+        <Button
+            android:id="@+id/ChordButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+
+        <Button
+            android:id="@+id/ChordButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".185"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ChordButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+
+        <Button
+            android:id="@+id/ChordButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+
+        <Button
+            android:id="@+id/ChordButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+
+        <Button
+            android:id="@+id/ChordButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/background"
+            android:onClick="chordClick" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".29"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ProgressionButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+        <Button
+            android:id="@+id/ProgressionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+        <Button
+            android:id="@+id/ProgressionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+        <Button
+            android:id="@+id/ProgressionButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".29"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ProgressionButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+        <Button
+            android:id="@+id/ProgressionButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+        <Button
+            android:id="@+id/ProgressionButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+        <Button
+            android:id="@+id/ProgressionButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:background="@drawable/progression_background"
+            android:textColor="#A8ACB8"
+            android:onClick="progressionClick"
+            android:textSize="44sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".01"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".4"
+            android:onClick="playButton"
+            android:background="@drawable/background"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".4"
+            android:background="@drawable/background"
+            android:onClick="pauseProgression"
+            app:srcCompat="@android:drawable/ic_media_pause" />
+
+        <ImageButton
+            android:id="@+id/LoopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            android:background="@drawable/background"
+            android:onClick="changeLoop"
+            app:srcCompat="@android:drawable/ic_menu_revert" />
+
+        <EditText
+            android:id="@+id/BPMText"
+            android:layout_width="61dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="BPM"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ReturnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight=".04"
+        android:background="@drawable/background"
+        android:text="Go Back" />
+
+
+</LinearLayout>

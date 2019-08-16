@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ChordProgressionBuilder</string>
+    <string name="minor_key">Minor Key</string>
+    <string name="create_key">Generate</string>
+    <string name="next_page">Continue</string>
+    <string name="key_generator">Key Generator</string>
+    <string name="chord_info">Selected Chord Info:</string>
+
+
+
+    <string-array name="keys">
+        <item>C</item>
+        <item>C#</item>
+        <item>Db</item>
+        <item>D</item>
+        <item>D#</item>
+        <item>Eb</item>
+        <item>E</item>
+        <item>F</item>
+        <item>F#</item>
+        <item>Gb</item>
+        <item>G</item>
+        <item>G#</item>
+        <item>Ab</item>
+        <item>A</item>
+        <item>A#</item>
+        <item>Bb</item>
+        <item>B</item>
+    </string-array>
+</resources>
