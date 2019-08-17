@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -51,49 +52,177 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:weightSum="1"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/Chord1Button1"
+        android:weightSum="1">
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord1Button2"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <Button
+                android:id="@+id/Chord1Button1"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:background="@drawable/chord_button_spacer"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord1Button3"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord1Button2"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord1Button4"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord1Button3"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord1Button4"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -114,7 +243,8 @@
                 android:minWidth="40dp"
                 android:minHeight="40dp"
                 android:layout_gravity="center"
-                android:background="@drawable/circle_button">
+                android:background="@drawable/circle_button"
+                android:src="@drawable/ic_play_arrow_black_24dp">
             </ImageButton>
             <ImageButton
                 android:id="@+id/Chord1Save"
@@ -122,9 +252,10 @@
                 android:layout_height="wrap_content"
                 android:minWidth="40dp"
                 android:minHeight="40dp"
-                android:layout_marginLeft="8px"
+                android:layout_marginStart="8px"
                 android:layout_gravity="center"
-                android:background="@drawable/circle_button">
+                android:background="@drawable/circle_button"
+                android:src="@drawable/ic_file_download_black_24dp">
             </ImageButton>
         </LinearLayout>
     </LinearLayout>
@@ -132,50 +263,178 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:weightSum="1"
+        android:orientation="horizontal"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/Chord2Button1"
+        android:weightSum="1">
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord2Button2"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <Button
+                android:id="@+id/Chord2Button1"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:background="@drawable/chord_button_spacer"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord2Button3"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord2Button2"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord2Button4"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord2Button3"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord2Button4"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -196,6 +455,7 @@
                 android:minWidth="40dp"
                 android:minHeight="40dp"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_play_arrow_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
             <ImageButton
@@ -204,8 +464,9 @@
                 android:layout_height="wrap_content"
                 android:minWidth="40dp"
                 android:minHeight="40dp"
-                android:layout_marginLeft="8px"
+                android:layout_marginStart="8px"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_file_download_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
         </LinearLayout>
@@ -214,50 +475,178 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:weightSum="1"
+        android:orientation="horizontal"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/Chord3Button1"
+        android:weightSum="1">
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord3Button2"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <Button
+                android:id="@+id/Chord3Button1"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:background="@drawable/chord_button_spacer"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord3Button3"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord3Button2"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord3Button4"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord3Button3"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord3Button4"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -278,7 +667,8 @@
                 android:minWidth="40dp"
                 android:minHeight="40dp"
                 android:layout_gravity="center"
-                android:background="@drawable/circle_button">
+                android:src="@drawable/ic_play_arrow_black_24dp"
+            android:background="@drawable/circle_button">
             </ImageButton>
             <ImageButton
                 android:id="@+id/Chord3Save"
@@ -286,8 +676,9 @@
                 android:layout_height="wrap_content"
                 android:minWidth="40dp"
                 android:minHeight="40dp"
-                android:layout_marginLeft="8px"
+                android:layout_marginStart="8px"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_file_download_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
         </LinearLayout>
@@ -296,50 +687,178 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:weightSum="1"
+        android:orientation="horizontal"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/Chord4Button1"
+        android:weightSum="1">
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord4Button2"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <Button
+                android:id="@+id/Chord4Button1"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:background="@drawable/chord_button_spacer"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord4Button3"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord4Button2"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/Chord4Button4"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord4Button3"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/Chord4Button4"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -360,6 +879,7 @@
                 android:minWidth="40dp"
                 android:minHeight="40dp"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_play_arrow_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
             <ImageButton
@@ -368,8 +888,9 @@
                 android:layout_height="wrap_content"
                 android:minWidth="40dp"
                 android:minHeight="40dp"
-                android:layout_marginLeft="8px"
+                android:layout_marginStart="8px"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_file_download_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
         </LinearLayout>
@@ -390,50 +911,178 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight=".15"
-        android:weightSum="1"
+        android:orientation="horizontal"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/CustomChordButton1"
+        android:weightSum="1">
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/CustomChordButton2"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <Button
+                android:id="@+id/CustomChordButton1"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:background="@drawable/chord_button_spacer"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
-            android:onClick="chordClick"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/CustomChordButton3"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/CustomChordButton2"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                android:textAllCaps="false"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:id="@+id/CustomChordButton4"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/CustomChordButton3"
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".15"
             android:layout_height="match_parent"
-            android:onClick="chordClick"
             android:background="@drawable/chord_button"
-            android:textSize="36sp"
-            android:textAllCaps="false"
-            />
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@drawable/chord_button_spacer"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/CustomChordButton4"
+                android:layout_width="0dp"
+                android:layout_weight=".9"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="chordClick"
+                android:textSize="36sp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -448,22 +1097,24 @@
             android:background="@drawable/chord_button"
             >
             <ImageButton
-                android:id="@+id/CustomChordPlay"
+                android:id="@+id/CustomPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="40dp"
                 android:minHeight="40dp"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_play_arrow_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
             <ImageButton
-                android:id="@+id/CustomChordSave"
+                android:id="@+id/CustomSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="40dp"
                 android:minHeight="40dp"
-                android:layout_marginLeft="8px"
+                android:layout_marginStart="8px"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_file_download_black_24dp"
                 android:background="@drawable/circle_button">
             </ImageButton>
         </LinearLayout>
