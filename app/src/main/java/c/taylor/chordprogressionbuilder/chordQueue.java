@@ -4,19 +4,20 @@ import android.content.Context;
 import android.media.SoundPool;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class chordQueue {
 
-    private String[][] queue;
+    private ArrayList<ArrayList<String>> queue;
     private int endOfQueue;
 
-    public chordQueue(int size, int sizeOfChords){
+    public chordQueue(int size){
         endOfQueue = 0;
-        queue = new String[size][sizeOfChords];
-            for(int r = 0; r < queue.length; r++){
-                for(int c  = 0; c < queue[0].length; c++){
-                    queue[r][c] = " ";
-                }
-            }
+        queue = new ArrayList<>();
+        for(int r = 0; r < size; r++){
+            queue.add(new ArrayList<String>());
+        }
     }
 
     public int getSize(){
@@ -24,65 +25,43 @@ public class chordQueue {
     }
 
     public boolean isFull(){
-        return endOfQueue > queue.length - 1;
+        return endOfQueue > queue.size() - 1;
     }
 
-    public int addChord(String[] chord){
+    public int addChord(ArrayList<String> chord){
         return addChord(chord, endOfQueue);
     }
 
-    public int addChord(String[] chord, int pos){
+    public int addChord(ArrayList<String> chord, int pos){
         if(isFull()) {
             return 0;
         }
         else {
-            for (int c = 0; c < queue[0].length; c++) {
-                queue[pos][c] = chord[c];
-            }
-            if(pos > endOfQueue) {
-                endOfQueue = pos;
-            }
+            queue.set(pos, chord);
+            endOfQueue++;
             return 1;
         }
     }
 
-    public String[] getChord(int pos){
-        String[] chord = new String[queue[pos].length];
-        for(int c = 0; c < chord.length; c++){
-            chord[c] = queue[pos][c];
-        }
-        return chord;
+    public ArrayList<String> getChord(int pos){
+        return queue.get(pos);
     }
 
     public void removeChord(int pos){
-        for(int c = 0; c < queue[0].length; c++){
-            queue[pos][c] = " ";
-        }
-        endOfQueue = reSize();
-    }
-
-    public int reSize(){
-        for(int r = queue.length - 1; r >= 0; r--){
-            if(!(queue[r][0].equals(" ")))
-                return r;
-        }
-        return 0;
+        queue.remove(pos);
+        endOfQueue--;
     }
 
     public String toString(){
         StringBuilder allChord = new StringBuilder();
-        for(int r = 0; r < queue.length-1; r++){
+        for(int r = 0; r < queue.size()-1; r++){
+            ArrayList<String> curChord = queue.get(r);
             StringBuilder oneChord = new StringBuilder();
-            for(int c = 0; c < queue[0].length; c++){
-                oneChord.append(queue[r][c]);
+            for(int c = 0; c < curChord.size(); c++){
+                oneChord.append(curChord.get(c) + ' ');
             }
             allChord.append(oneChord + ", ");
         }
-        StringBuilder oneChord = new StringBuilder();
-        for(int c = 0; c < queue[0].length; c++){
-            oneChord.append(queue[queue.length-1][c]);
-        }
-        allChord.append(oneChord);
         return allChord.toString();
     }
 

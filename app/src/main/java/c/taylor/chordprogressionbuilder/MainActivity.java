@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, chordprogressionbuilder2.class);
             intent.putExtra("key", key);
             intent.putExtra("notes", notes);
+            intent.putExtra("isMinor", isMinor);
             soundPool.release();
             startActivity(intent);
         }
