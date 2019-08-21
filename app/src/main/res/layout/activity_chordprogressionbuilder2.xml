@@ -928,17 +928,15 @@
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
             android:weightSum="1">
-            <Button
+            <Spinner
                 android:id="@+id/CustomChordButton1"
                 android:layout_width="0dp"
                 android:layout_weight=".9"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:onClick="chordClick"
                 android:textSize="36sp"
-                android:textAllCaps="false"
-                style="?android:attr/borderlessButtonStyle"
-                />
+                android:textAllCaps="false">
+            </Spinner>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight=".1"
@@ -977,16 +975,14 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@drawable/chord_button_spacer"/>
             </LinearLayout>
-            <Button
+            <Spinner
                 android:id="@+id/CustomChordButton2"
                 android:layout_width="0dp"
                 android:layout_weight=".8"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:onClick="chordClick"
                 android:textSize="36sp"
                 android:textAllCaps="false"
-                style="?android:attr/borderlessButtonStyle"
                 />
             <LinearLayout
                 android:layout_width="0dp"
@@ -1026,15 +1022,13 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@drawable/chord_button_spacer"/>
             </LinearLayout>
-            <Button
+            <Spinner
                 android:id="@+id/CustomChordButton3"
                 android:layout_width="0dp"
                 android:layout_weight=".8"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:onClick="chordClick"
                 android:textSize="36sp"
-                style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
             <LinearLayout
@@ -1075,15 +1069,13 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@drawable/chord_button_spacer"/>
             </LinearLayout>
-            <Button
+            <Spinner
                 android:id="@+id/CustomChordButton4"
                 android:layout_width="0dp"
                 android:layout_weight=".9"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:onClick="chordClick"
                 android:textSize="36sp"
-                style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
         </LinearLayout>

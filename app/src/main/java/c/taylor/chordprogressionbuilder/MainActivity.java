@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private static String[] flatNotes = new String[] {"C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
     private static String[][] NOTES = new String[2][24];
     private String[] notes = new String[14];
-    private String[] triad = new String[3];
+    private ArrayList<String> triad = new ArrayList<>();
     private boolean isMinor;
     ArrayAdapter<CharSequence> adapter;
 
@@ -86,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < chordButtons.length; i++) {
                         (chordButtons[i]).setText(getSimplifiedNote(notes[i]));
                     }
+                    String headerText = "Chords in " + getSimplifiedNote(key);
+                    if(isMinor){
+                        headerText += " Minor";
+                    }else{
+                        headerText += " Major";
+                    }
+                    KeyHeader.setText(headerText + ':');
                 }
 
             }
@@ -137,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 if(loaded && (chordButtons[i].getText()).length() > 0) {
                     stopSounds();
                     playChord(chordButtons[i]);
-                    openInfoBox(chordButtons[i]);
+                    //openInfoBox(chordButtons[i]);
                 }
             }
         }
@@ -151,29 +159,30 @@ public class MainActivity extends AppCompatActivity {
     }
     //This method plays the triad of the button that was touched
     public void playChord(Button rootButton) {
-        String rootNote = (String)rootButton.getText();
+        String rootNote = ((String)rootButton.getText());
         makeTriad(getUnsimplifiedNote(rootNote));
-        for(int i = 0; i < triad.length; i++) {
+        for(int i = 0; i < triad.size(); i++) {
             AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
             float curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
             float maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
             float volume = curVolume/maxVolume;
-            soundPool.play(Sounds.get(triad[i]), volume , volume , 1 , 0 , 1);
+            soundPool.play(Sounds.get(triad.get(i).toUpperCase()), volume , volume , 1 , 0 , 1);
         }
     }
 
     //This method takes the rootNote of the button and creates a 3 note triad based on the key that the user selected
     public void makeTriad(String rootNote) {
         int startIndex = 0;
-        for(int i = 0; i < notes.length/2; i++){
+        triad = new ArrayList<>();
+        for(int i = 0; i < notes.length; i++){
             if(notes[i].equals(rootNote))
                 startIndex = i;
         }
-        for(int a = 0; a < triad.length; a++){
+        for(int a = 0; a < 3; a++){
             int noteIndex = startIndex + (a*2);
             if(noteIndex >= notes.length)
                 noteIndex -= (notes.length - 1);
-            triad[a] = notes[noteIndex];
+            triad.add(notes[noteIndex]);
         }
     }
 
@@ -187,10 +196,10 @@ public class MainActivity extends AppCompatActivity {
     public void displayNotes(Button chord) {
         makeTriad(getUnsimplifiedNote((String)chord.getText()));
         triadNotesTextView.setText("");
-        for(int i = 0; i < triad.length-1; i++){
-            triadNotesTextView.append(getSimplifiedNote(triad[i]) + "-");
+        for(int i = 0; i < triad.size()-1; i++){
+            triadNotesTextView.append(getSimplifiedNote(triad.get(i)) + "-");
         }
-        triadNotesTextView.append(getSimplifiedNote(triad[triad.length-1]));
+        triadNotesTextView.append(getSimplifiedNote(triad.get(triad.size()-1)));
     }
 
     //This method takes the chord and based on its position in the key, displays its quality(Major, minor, diminished)
@@ -240,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
         chordButtons[5] = findViewById(R.id.ChordButton6);
         chordButtons[6] = findViewById(R.id.ChordButton7);
         chordButtons[7] = findViewById(R.id.ChordButton8);
+        KeyHeader = findViewById(R.id.KeyHeader);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();
             soundPool = new SoundPool.Builder().setMaxStreams(17).setAudioAttributes(audioAttributes).build();
@@ -337,6 +347,11 @@ public class MainActivity extends AppCompatActivity {
                     index = index + 2;
                 notes[a] = NOTES[rowNum][index];
             }
+            //set proper chords to lowercase
+            notes[1] = notes[1].toLowerCase();
+            notes[2] = notes[2].toLowerCase();
+            notes[5] = notes[5].toLowerCase();
+            notes[6] = notes[6].toLowerCase();
         }
         else {
             for(int a = 1; a < 8; a++) {
@@ -346,6 +361,11 @@ public class MainActivity extends AppCompatActivity {
                     index = index + 2;
                 notes[a] = NOTES[rowNum][index];
             }
+            //set proper chords to lowercase
+            notes[0] = notes[0].toLowerCase();
+            notes[3] = notes[3].toLowerCase();
+            notes[4] = notes[4].toLowerCase();
+            notes[1] = notes[1].toLowerCase();
         }
 
         for(int x = 8; x < notes.length; x++){

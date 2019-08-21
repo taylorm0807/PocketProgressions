@@ -33,14 +33,11 @@ public class chordQueue {
     }
 
     public int addChord(ArrayList<String> chord, int pos){
-        if(isFull()) {
-            return 0;
-        }
-        else {
-            queue.set(pos, chord);
+        if(!isFull()){
             endOfQueue++;
-            return 1;
         }
+        queue.set(pos, chord);
+        return 1;
     }
 
     public ArrayList<String> getChord(int pos){

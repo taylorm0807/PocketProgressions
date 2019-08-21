@@ -10,9 +10,12 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.Console;
@@ -24,17 +27,20 @@ import java.util.Map;
 public class chordprogressionbuilder2 extends AppCompatActivity {
 
     private Button[][] chordButtons = new Button[4][4];
-    private Button[] customProgression = new Button[4];
+    private Spinner[] customProgression = new Spinner[4];
     private chordQueue[] commonProgQueues = new chordQueue[4];
+    private chordQueue customQueue;
     private ImageButton[] playButtons = new ImageButton[4];
     private ImageButton[] downloadButtons = new ImageButton[4];
     private String key;
     private int progressionIndex = 0;
+    private boolean playCustom = false;
     private SoundPool soundPool;
     private Button returnButton;
     private EditText BPMText;
     private Map<String, Integer> Sounds = new HashMap<>();
     private String[] notes = new String[14];
+    private String[] spinnerNotes = new String[7];
     private ArrayList<String> triad = new ArrayList<>();
     private boolean isMinor;
     private ArrayList<String> tempTriad;
@@ -44,6 +50,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     private ArrayList<Integer> soundIDsPlaying = new ArrayList<>();
     private int delay;
     private boolean loaded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +68,14 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                 playChord();
             }
         };
-
         initializeUI();
         for(int i = 0; i < commonProgQueues.length; i++){
             commonProgQueues[i] = new chordQueue(4);
         }
-        //This sets all of the buttons text to the simplified version of each note to each note in the key
-        //TODO: On load, propogate the 4 common progressions with the notes
+        for(int i = 0; i < spinnerNotes.length; i++){
+            spinnerNotes[i] = notes[i];
+        }
+        customQueue = new chordQueue(4);
         loadCommonProgressions();
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
@@ -82,7 +90,47 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                 changeActivity();
             }
         });
+        for(int i = 0; i < customProgression.length; i++){
+            customProgression[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    int queuePos = 0;
+                    for(int i = 0; i < customProgression.length; i++){
+                        if(parent.getId() == customProgression[i].getId()){
+                            queuePos = i;
+                        }
+                    }
+                    makeTriad(parent.getItemAtPosition(position).toString());
+                    customQueue.addChord(triad, queuePos);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+
+            });
+            customProgression[i].setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    chordHold(view);
+                    return true;
+                }
+            });
+        }
+        for(int r = 0; r < chordButtons.length; r++){
+            for(int c = 0; c < chordButtons[0].length; c++){
+                chordButtons[r][c].setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        chordHold(view);
+                        return true;
+                    }
+                });
+            }
+        }
     }
+
 
     //Fills in the 4 common progressions for the given key
     public void loadCommonProgressions(){
@@ -115,13 +163,15 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         for(int i = 0; i < 4; i++){
             if(playButtons[i].getId() == v.getId()){
                 progressionIndex = i;
+                playCustom = false;
                 playButton();
             }
         }
     }
 
     public void playCustomProgression(View v){
-
+        playCustom = true;
+        playButton();
     }
     //This is called when the return button is called, and opens the first screen where you pick a key
     public void changeActivity(){
@@ -153,6 +203,11 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         customProgression[1] = findViewById(R.id.CustomChordButton2);
         customProgression[2] = findViewById(R.id.CustomChordButton3);
         customProgression[3] = findViewById(R.id.CustomChordButton4);
+        for(int i = 0; i < customProgression.length; i++){
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_item, spinnerNotes);
+            customProgression[i].setAdapter(spinnerArrayAdapter);
+        }
         BPMText = findViewById(R.id.BPMText);
         //Initialize the play and download buttons
         playButtons = new ImageButton[]{findViewById(R.id.Chord1Play), findViewById(R.id.Chord2Play), findViewById(R.id.Chord3Play), findViewById(R.id.Chord4Play)};
@@ -208,6 +263,11 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
 
 
     public void chordClick(View v){
+        Toast.makeText(this, "Button press", Toast.LENGTH_SHORT).show();
+    }
+
+    public void chordHold(View v){
+        Toast.makeText(this, "Button hold", Toast.LENGTH_SHORT).show();
     }
 
     //This method takes the rootNote of the button and creates a 3 note triad based on the key that the user created in the first
@@ -241,11 +301,15 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         stopSounds();
         int BPM = getBPM();
         delay = (int)((60.0/BPM) *(1000));
+        int length = customQueue.getSize() - 1;
+        if(!playCustom){
+            length = commonProgQueues[progressionIndex].getSize() - 1;
+        }
         //checks to make sure all of the sounds are loaded before trying to play the progression
         if(loaded) {
             playChord();
             //Calls each chord that is currently in the queue, sepereated by a time of delay, based on the BPM entered
-            for (int i = 0; i < commonProgQueues[progressionIndex].getSize() - 1; i++) {
+            for (int i = 0; i < length; i++) {
                 myHandler.postDelayed(r, delay * (i + 1));
             }
         }
@@ -270,22 +334,20 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
 //        //The current playing button is given an outline to show what chord is playing
 //        progressionButtons[index].setBackground(getResources().getDrawable(R.drawable.currently_playing_button));
 
-
-        tempTriad = commonProgQueues[progressionIndex].getChord(index);
-        if(tempTriad.get(0).equals(" ")){
-            //There is a rest
+        if(!playCustom){
+            tempTriad = commonProgQueues[progressionIndex].getChord(index);
+        }else{
+            tempTriad = customQueue.getChord(index);
         }
-        else{
-            soundIDsPlaying = new ArrayList<>();
-            //If the progression isn't paused, it goes through the triad created for the chord and plays each note together
-            for (int a = 0; a < tempTriad.size(); a++) {
-                soundIDsPlaying.add(soundPool.play(Sounds.get(tempTriad.get(a)), 1, 1, 1, 0, 1));
-            }
+        soundIDsPlaying = new ArrayList<>();
+        //Go through the triad created for the chord and plays each note together
+        for (int a = 0; a < tempTriad.size(); a++) {
+            soundIDsPlaying.add(soundPool.play(Sounds.get(tempTriad.get(a).toUpperCase()), 1, 1, 1, 0, 1));
         }
         index++;
-        //If the index is at the max number of chords, either stops or resets depending on the loop button
-        if(index == (commonProgQueues[0].getSize() + 1)) {
+        if(index > 4) {
             index = 0;
+            playCustom = false;
         }
     }
 
