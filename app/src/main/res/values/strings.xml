@@ -9,6 +9,7 @@
     <string name="bpm">BPM</string>
     <string name="common_progressions">Common Progressions:</string>
     <string name="custom_progressions">Custom Progression:</string>
+    <string name="customize_chord">Customize Chord</string>
 
 
     <string-array name="keys">

@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 if(loaded && (chordButtons[i].getText()).length() > 0) {
                     stopSounds();
                     playChord(chordButtons[i]);
-                    //openInfoBox(chordButtons[i]);
+                    openInfoBox(chordButtons[i]);
                 }
             }
         }
@@ -166,7 +166,8 @@ public class MainActivity extends AppCompatActivity {
             float curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
             float maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
             float volume = curVolume/maxVolume;
-            soundPool.play(Sounds.get(triad.get(i).toUpperCase()), volume , volume , 1 , 0 , 1);
+            String noteName = triad.get(i).substring(0,1).toUpperCase() + triad.get(i).substring(1);
+            soundPool.play(Sounds.get(noteName), volume , volume , 1 , 0 , 1);
         }
     }
 
@@ -197,9 +198,9 @@ public class MainActivity extends AppCompatActivity {
         makeTriad(getUnsimplifiedNote((String)chord.getText()));
         triadNotesTextView.setText("");
         for(int i = 0; i < triad.size()-1; i++){
-            triadNotesTextView.append(getSimplifiedNote(triad.get(i)) + "-");
+            triadNotesTextView.append(getSimplifiedNote(triad.get(i)).toUpperCase() + "-");
         }
-        triadNotesTextView.append(getSimplifiedNote(triad.get(triad.size()-1)));
+        triadNotesTextView.append(getSimplifiedNote(triad.get(triad.size()-1)).toUpperCase());
     }
 
     //This method takes the chord and based on its position in the key, displays its quality(Major, minor, diminished)
@@ -366,6 +367,7 @@ public class MainActivity extends AppCompatActivity {
             notes[3] = notes[3].toLowerCase();
             notes[4] = notes[4].toLowerCase();
             notes[1] = notes[1].toLowerCase();
+            notes[7] = notes[7].toLowerCase();
         }
 
         for(int x = 8; x < notes.length; x++){

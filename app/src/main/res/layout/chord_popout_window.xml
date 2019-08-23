@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="350dp"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:weightSum="1"
+    android:padding="12dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight=".1"
+        android:layout_gravity="center"
+        android:textSize="35sp"
+        android:text="@string/customize_chord"
+        android:textAlignment="center"
+
+        android:textColor="@color/textColor">
+    </TextView>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".3"
+        android:orientation="vertical"
+        android:weightSum="1"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".4"
+            android:textSize="20sp"
+            android:text="Chord Type:"
+            android:textColor="@color/textColor"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".6">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".3"
+                android:textColor="@color/textColor"
+                android:onClick="radioTypeChange"
+                android:theme="@style/RadioButtonStyle"
+                android:text="Triad"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".3"
+                android:textColor="@color/textColor"
+                android:onClick="radioTypeChange"
+                android:theme="@style/RadioButtonStyle"
+                android:text="7th Chord"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".6"
+        android:orientation="vertical"
+        android:weightSum="1"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2"
+            android:textSize="20sp"
+            android:text="Inversion:"
+            android:textColor="@color/textColor"/>
+        <RadioGroup
+            android:id="@+id/InversionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8">
+            <RadioButton
+                android:id="@+id/ChordRootInversionButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:textColor="@color/textColor"
+                android:onClick="radioInversionChange"
+                android:theme="@style/RadioButtonStyle"
+                android:text="Root"/>
+            <RadioButton
+                android:id="@+id/Chord1stInversionButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:textColor="@color/textColor"
+                android:theme="@style/RadioButtonStyle"
+                android:onClick="radioInversionChange"
+                android:text="1st Inversion"/>
+            <RadioButton
+                android:id="@+id/Chord2ndInversionButton"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:theme="@style/RadioButtonStyle"
+                android:textColor="@color/textColor"
+                android:onClick="radioInversionChange"
+                android:text="2nd Inversion"/>
+            <RadioButton
+                android:id="@+id/Chord3rdInversionButton"
+                android:theme="@style/RadioButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"
+                android:textColor="@color/textColor"
+                android:onClick="radioInversionChange"
+                android:text="3rd Inversion"/>
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>

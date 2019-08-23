@@ -1,6 +1,11 @@
 package c.taylor.chordprogressionbuilder;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -9,14 +14,22 @@ import android.os.Debug;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.style.TextAppearanceSpan;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -30,9 +43,13 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     private Spinner[] customProgression = new Spinner[4];
     private chordQueue[] commonProgQueues = new chordQueue[4];
     private chordQueue customQueue;
+    private LinearLayout[][] buttonLayouts = new LinearLayout[5][4];
     private ImageButton[] playButtons = new ImageButton[4];
     private ImageButton[] downloadButtons = new ImageButton[4];
     private String key;
+    private ArrayList<String> alteringChord = new ArrayList<>();
+    private String alteringRoot = "";
+    private int[] alteringButtonPos = new int[2];
     private int progressionIndex = 0;
     private boolean playCustom = false;
     private SoundPool soundPool;
@@ -41,11 +58,12 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     private Map<String, Integer> Sounds = new HashMap<>();
     private String[] notes = new String[14];
     private String[] spinnerNotes = new String[7];
-    private ArrayList<String> triad = new ArrayList<>();
+    private ArrayList<String> currentChord = new ArrayList<>();
     private boolean isMinor;
     private ArrayList<String> tempTriad;
     private Handler myHandler;
     private Runnable r;
+    private Dialog popupDialog;
     private int index = 0;
     private ArrayList<Integer> soundIDsPlaying = new ArrayList<>();
     private int delay;
@@ -55,7 +73,8 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chordprogressionbuilder2);
-        returnButton = (Button)findViewById(R.id.ReturnButton);
+        popupDialog = new Dialog(this);
+        returnButton = findViewById(R.id.ReturnButton);
         Bundle extraData = getIntent().getExtras();
         myHandler = new Handler();
         key = extraData.getString("key");
@@ -73,7 +92,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
             commonProgQueues[i] = new chordQueue(4);
         }
         for(int i = 0; i < spinnerNotes.length; i++){
-            spinnerNotes[i] = notes[i];
+            spinnerNotes[i] = getSimplifiedNote(notes[i]);
         }
         customQueue = new chordQueue(4);
         loadCommonProgressions();
@@ -100,8 +119,11 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                             queuePos = i;
                         }
                     }
-                    makeTriad(parent.getItemAtPosition(position).toString());
-                    customQueue.addChord(triad, queuePos);
+                    makeChord(getUnsimplifiedNote(parent.getItemAtPosition(position).toString()), 3);
+                    customQueue.addChord(currentChord, queuePos);
+                    ((TextView) parent.getChildAt(0)).setTextSize(24);
+                    ((TextView) parent.getChildAt(0)).setGravity(Gravity.CENTER);
+                    ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
                 }
 
                 @Override
@@ -152,8 +174,8 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         }
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 4; j++) {
-                makeTriad(notes[progressionIndices[i][j]]);
-                commonProgQueues[i].addChord(triad,j);
+                makeChord(notes[progressionIndices[i][j]], 3);
+                commonProgQueues[i].addChord(currentChord,j);
                 chordButtons[i][j].setText(getSimplifiedNote(commonProgQueues[i].getChord(j).get(0)));
             }
         }
@@ -171,6 +193,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
 
     public void playCustomProgression(View v){
         playCustom = true;
+        progressionIndex = 4;
         playButton();
     }
     //This is called when the return button is called, and opens the first screen where you pick a key
@@ -207,7 +230,15 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
                     this, android.R.layout.simple_spinner_item, spinnerNotes);
             customProgression[i].setAdapter(spinnerArrayAdapter);
+
         }
+        buttonLayouts = new LinearLayout[][]{
+                {findViewById(R.id.Chord1Key1), findViewById(R.id.Chord1Key2), findViewById(R.id.Chord1Key3), findViewById(R.id.Chord1Key4)},
+                {findViewById(R.id.Chord2Key1), findViewById(R.id.Chord2Key2), findViewById(R.id.Chord2Key3), findViewById(R.id.Chord2Key4)},
+                {findViewById(R.id.Chord3Key1), findViewById(R.id.Chord3Key2), findViewById(R.id.Chord3Key3), findViewById(R.id.Chord3Key4)},
+                {findViewById(R.id.Chord4Key1), findViewById(R.id.Chord4Key2), findViewById(R.id.Chord4Key3), findViewById(R.id.Chord4Key4)},
+                {findViewById(R.id.Chord5Key1), findViewById(R.id.Chord5Key2), findViewById(R.id.Chord5Key3), findViewById(R.id.Chord5Key4)},
+        };
         BPMText = findViewById(R.id.BPMText);
         //Initialize the play and download buttons
         playButtons = new ImageButton[]{findViewById(R.id.Chord1Play), findViewById(R.id.Chord2Play), findViewById(R.id.Chord3Play), findViewById(R.id.Chord4Play)};
@@ -262,28 +293,122 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     }
 
 
+    //Possible Feature: on click of common chord progressions, play the clicked chord
     public void chordClick(View v){
-        Toast.makeText(this, "Button press", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Button press", Toast.LENGTH_SHORT).show();
     }
 
+    //On holding of a chord, opens the popup window to alter the chords attributes if so desired
     public void chordHold(View v){
-        Toast.makeText(this, "Button hold", Toast.LENGTH_SHORT).show();
+        Integer tgtProgression = null;
+        Integer tgtChord = null;
+        for(int i = 0; i < customProgression.length; i++){
+            if(v.getId() == customProgression[i].getId()){
+                tgtProgression = -1;
+                tgtChord = i;
+                alteringRoot = customProgression[i].getSelectedItem().toString();
+            }
+        }
+        if(tgtProgression == null){
+            for(int r = 0; r < chordButtons.length; r++){
+                for(int c = 0; c < chordButtons[r].length; c++ ){
+                    if(v.getId() == chordButtons[r][c].getId()){
+                        tgtProgression = r;
+                        tgtChord = c;
+                        alteringRoot = chordButtons[r][c].getText().toString();
+                    }
+                }
+            }
+        }
+        if(tgtProgression == -1){
+            alteringChord = customQueue.getChord(tgtChord);
+        }else{
+            alteringChord = commonProgQueues[tgtProgression].getChord(tgtChord);
+        }
+        alteringButtonPos = new int[]{tgtProgression, tgtChord};
+        popupDialog.setContentView(R.layout.chord_popout_window);
+        popupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupDialog.show();
+    }
+
+    public void radioInversionChange(View v){
+        String buttonText = ((RadioButton)v).getText().toString();
+        if(alteringChord.size() == 3) {
+            makeChord(alteringRoot, 3);
+            alteringChord = currentChord;
+        }else{
+            makeChord(alteringRoot, 4);
+            alteringChord = currentChord;
+        }
+        String temp;
+        switch (buttonText){
+            default:
+                //do nothing, already set to root triad position
+                break;
+            case "1st Inversion":
+                temp = alteringChord.get(1);
+                alteringChord.set(1, alteringChord.get(0));
+                alteringChord.set(0, temp);
+                break;
+            case "2nd Inversion":
+                temp = alteringChord.get(2);
+                alteringChord.set(2, alteringChord.get(1));
+                alteringChord.set(1, alteringChord.get(0));
+                alteringChord.set(0, temp);
+                break;
+            case "3rd Inversion":
+                if(alteringChord.size() == 3) {
+                    Toast.makeText(this, "uhoh, it isn't a 7th chord!", Toast.LENGTH_SHORT).show();
+                }else{
+                    temp = alteringChord.get(3);
+                    alteringChord.set(3, alteringChord.get(2));
+                    alteringChord.set(2, alteringChord.get(1));
+                    alteringChord.set(1, alteringChord.get(0));
+                    alteringChord.set(0, temp);
+                }
+                break;
+        }
+        if(alteringButtonPos[0] == -1){
+            customQueue.addChord(alteringChord, alteringButtonPos[1]);
+        }else{
+            commonProgQueues[alteringButtonPos[0]].addChord(alteringChord, alteringButtonPos[1]);
+        }
+
+    }
+
+    public void radioTypeChange(View v){
+        String buttonText = ((RadioButton)v).getText().toString();
+        switch (buttonText){
+            default:
+                makeChord(alteringRoot, 3);
+                alteringChord = currentChord;
+                break;
+            case "7th Chord":
+                makeChord(alteringRoot, 4);
+                alteringChord = currentChord;
+                break;
+        }
+        if(alteringButtonPos[0] == -1){
+            customQueue.addChord(alteringChord, alteringButtonPos[1]);
+        }else{
+            commonProgQueues[alteringButtonPos[0]].addChord(alteringChord, alteringButtonPos[1]);
+        }
     }
 
     //This method takes the rootNote of the button and creates a 3 note triad based on the key that the user created in the first
     //activity
-    public void makeTriad(String rootNote) {
+    public void makeChord(String rootNote, int chordSize) {
         int startIndex = 0;
-        triad = new ArrayList<>();
+        currentChord = new ArrayList<>();
         for(int i = 0; i < notes.length/2; i++){
             if(notes[i].equals(rootNote))
                 startIndex = i;
         }
-        for(int a = 0; a < 3; a++){
+        for(int a = 0; a < chordSize; a++){
             int noteIndex = startIndex + (a*2);
             if(noteIndex >= notes.length)
                 noteIndex -= (notes.length - 1);
-            triad.add(notes[noteIndex]);
+            currentChord.add(notes[noteIndex]);
         }
     }
 
@@ -322,17 +447,16 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     public void playChord() {
         //This logic deals with the background of the buttons and making sure that the button is only selected if
         //it is currently playing, so the previous button is set back to normal
-        //TODO: Change This Stuff to fit new app layout
 //        if(index == 0){
-//            for(int i = 0; i < progressionButtons.length; i++) {
-//                progressionButtons[i].setBackground(getResources().getDrawable(R.drawable.progression_background));
+//            for(int i = 0; i < 4; i++) {
+//                buttonLayouts[progressionIndex][i].setBackground(getResources().getDrawable(R.drawable.chord_button));
 //            }
 //        }
 //        else {
-//            progressionButtons[index - 1].setBackground(getResources().getDrawable(R.drawable.progression_background));
+//            buttonLayouts[progressionIndex][index - 1].setBackground(getResources().getDrawable(R.drawable.chord_button));
 //        }
 //        //The current playing button is given an outline to show what chord is playing
-//        progressionButtons[index].setBackground(getResources().getDrawable(R.drawable.currently_playing_button));
+//        buttonLayouts[progressionIndex][index].setBackground(getResources().getDrawable(R.drawable.selected_button));
 
         if(!playCustom){
             tempTriad = commonProgQueues[progressionIndex].getChord(index);

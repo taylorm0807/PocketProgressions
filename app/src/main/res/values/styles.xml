@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="RadioButtonStyle" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/radioButtonColor</item>
+        <item name="android:textColorSecondary">@color/textColor</item>
+    </style>
+
 </resources>
