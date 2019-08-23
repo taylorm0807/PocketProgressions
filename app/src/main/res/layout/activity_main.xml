@@ -75,13 +75,13 @@
         android:gravity="center"
         android:weightSum="1">
         <LinearLayout
+            android:id="@+id/ChordKey1"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <Button
                 android:id="@+id/ChordButton1"
@@ -110,13 +110,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ChordKey2"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -159,13 +159,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ChordKey3"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -208,13 +208,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ChordKey4"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -251,13 +251,13 @@
         android:gravity="center"
         android:weightSum="1">
         <LinearLayout
+            android:id="@+id/ChordKey5"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <Button
                 android:id="@+id/ChordButton5"
@@ -286,13 +286,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ChordKey6"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -335,13 +335,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ChordKey7"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -384,13 +384,13 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ChordKey8"
             android:layout_width="0dp"
             android:layout_weight=".2"
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"

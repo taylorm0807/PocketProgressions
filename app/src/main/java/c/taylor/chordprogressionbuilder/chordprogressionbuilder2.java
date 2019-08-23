@@ -14,6 +14,7 @@ import android.os.Debug;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.style.TextAppearanceSpan;
 import android.view.Gravity;
 import android.view.View;
@@ -306,7 +307,8 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
             if(v.getId() == customProgression[i].getId()){
                 tgtProgression = -1;
                 tgtChord = i;
-                alteringRoot = customProgression[i].getSelectedItem().toString();
+                removeInversionSigns(customProgression[i].getSelectedItem().toString());
+
             }
         }
         if(tgtProgression == null){
@@ -315,7 +317,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                     if(v.getId() == chordButtons[r][c].getId()){
                         tgtProgression = r;
                         tgtChord = c;
-                        alteringRoot = chordButtons[r][c].getText().toString();
+                        removeInversionSigns(chordButtons[r][c].getText().toString());
                     }
                 }
             }
@@ -331,6 +333,15 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         popupDialog.show();
     }
 
+    public void removeInversionSigns(String chordSymbol){
+        if(!chordSymbol.contains("#") || !chordSymbol.substring(1).contains("b")){
+            alteringRoot = chordSymbol.charAt(0) + "";
+        }else{
+            alteringRoot = chordSymbol.substring(0,1);
+        }
+        Toast.makeText(this, alteringRoot, Toast.LENGTH_LONG).show();
+    }
+
     public void radioInversionChange(View v){
         String buttonText = ((RadioButton)v).getText().toString();
         if(alteringChord.size() == 3) {
@@ -341,20 +352,34 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
             alteringChord = currentChord;
         }
         String temp;
+        String chordString = alteringRoot;
         switch (buttonText){
             default:
+                if(alteringChord.size() == 4){
+                    chordString += "<sup><small>7</small></sup>";
+                }
                 //do nothing, already set to root triad position
                 break;
             case "1st Inversion":
                 temp = alteringChord.get(1);
                 alteringChord.set(1, alteringChord.get(0));
                 alteringChord.set(0, temp);
+                if(alteringChord.size() == 3) {
+                    chordString += "<sup><small>6</small></sup>";
+                }else{
+                    chordString += "<sup><small>6</sup><sub>5</small></sub>";
+                }
                 break;
             case "2nd Inversion":
                 temp = alteringChord.get(2);
                 alteringChord.set(2, alteringChord.get(1));
                 alteringChord.set(1, alteringChord.get(0));
                 alteringChord.set(0, temp);
+                if(alteringChord.size() == 3) {
+                    chordString += "<sup><small>6</sup><sub>4</small></sub>";
+                }else{
+                    chordString += "<sup><small>4</sup><sub>3</small></sub>";
+                }
                 break;
             case "3rd Inversion":
                 if(alteringChord.size() == 3) {
@@ -365,6 +390,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                     alteringChord.set(2, alteringChord.get(1));
                     alteringChord.set(1, alteringChord.get(0));
                     alteringChord.set(0, temp);
+                    chordString += "<sup><small><small>4</sup><sub>2</small></small</sub>";
                 }
                 break;
         }
@@ -372,6 +398,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
             customQueue.addChord(alteringChord, alteringButtonPos[1]);
         }else{
             commonProgQueues[alteringButtonPos[0]].addChord(alteringChord, alteringButtonPos[1]);
+            chordButtons[alteringButtonPos[0]][alteringButtonPos[1]].setText(Html.fromHtml(chordString));
         }
 
     }
@@ -433,7 +460,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         //checks to make sure all of the sounds are loaded before trying to play the progression
         if(loaded) {
             playChord();
-            //Calls each chord that is currently in the queue, sepereated by a time of delay, based on the BPM entered
+            //Calls each chord that is currently in the queue, seperated by a time of delay, based on the BPM entered
             for (int i = 0; i < length; i++) {
                 myHandler.postDelayed(r, delay * (i + 1));
             }
@@ -447,16 +474,19 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     public void playChord() {
         //This logic deals with the background of the buttons and making sure that the button is only selected if
         //it is currently playing, so the previous button is set back to normal
-//        if(index == 0){
-//            for(int i = 0; i < 4; i++) {
-//                buttonLayouts[progressionIndex][i].setBackground(getResources().getDrawable(R.drawable.chord_button));
-//            }
-//        }
-//        else {
-//            buttonLayouts[progressionIndex][index - 1].setBackground(getResources().getDrawable(R.drawable.chord_button));
-//        }
-//        //The current playing button is given an outline to show what chord is playing
-//        buttonLayouts[progressionIndex][index].setBackground(getResources().getDrawable(R.drawable.selected_button));
+        if(index == 0){
+            for(int i = 0; i < 4; i++) {
+                buttonLayouts[progressionIndex][i].setBackground(getResources().getDrawable(R.drawable.chord_button));
+                buttonLayouts[progressionIndex][i].setPadding(0,0,0,0);
+            }
+        }
+        else {
+            buttonLayouts[progressionIndex][index - 1].setBackground(getResources().getDrawable(R.drawable.chord_button));
+            buttonLayouts[progressionIndex][index - 1].setPadding(0,0,0,0);
+        }
+        //The current playing button is given an outline to show what chord is playing
+        buttonLayouts[progressionIndex][index].setBackground(getResources().getDrawable(R.drawable.selected_button));
+        buttonLayouts[progressionIndex][index].setPadding(0,0,0,0);
 
         if(!playCustom){
             tempTriad = commonProgQueues[progressionIndex].getChord(index);

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView chordQualityTextView;
     private TextView triadNotesTextView;
     private Button[] chordButtons = new Button[8];
+    private LinearLayout[] buttonLayouts = new LinearLayout[8];
     private String key = "";
     private boolean loaded;
     private SoundPool soundPool;
@@ -146,7 +148,12 @@ public class MainActivity extends AppCompatActivity {
                     stopSounds();
                     playChord(chordButtons[i]);
                     openInfoBox(chordButtons[i]);
+                    buttonLayouts[i].setBackground(getResources().getDrawable(R.drawable.selected_button));
+                    buttonLayouts[i].setPadding(0,0,0,0);
                 }
+            }else{
+                buttonLayouts[i].setBackground(getResources().getDrawable(R.drawable.chord_button));
+                buttonLayouts[i].setPadding(0,0,0,0);
             }
         }
     }
@@ -250,6 +257,12 @@ public class MainActivity extends AppCompatActivity {
         chordButtons[5] = findViewById(R.id.ChordButton6);
         chordButtons[6] = findViewById(R.id.ChordButton7);
         chordButtons[7] = findViewById(R.id.ChordButton8);
+        buttonLayouts = new LinearLayout[]{
+                findViewById(R.id.ChordKey1), findViewById(R.id.ChordKey2),
+                findViewById(R.id.ChordKey3), findViewById(R.id.ChordKey4),
+                findViewById(R.id.ChordKey5), findViewById(R.id.ChordKey6),
+                findViewById(R.id.ChordKey7), findViewById(R.id.ChordKey8)
+        };
         KeyHeader = findViewById(R.id.KeyHeader);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();

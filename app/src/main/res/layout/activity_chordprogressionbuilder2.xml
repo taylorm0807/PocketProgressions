@@ -62,8 +62,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding = "0dp"
             android:weightSum="1">
             <Button
                 android:id="@+id/Chord1Button1"
@@ -72,7 +71,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -98,8 +97,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -122,7 +120,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -148,8 +146,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord1Key3"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -172,7 +169,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -198,8 +195,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord1Key4"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -222,7 +218,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -279,8 +275,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord2Key1"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <Button
                 android:id="@+id/Chord2Button1"
@@ -289,7 +284,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -315,8 +310,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord2Key2"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -339,7 +333,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -364,9 +358,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
+            android:padding="0dp"
             android:id="@+id/Chord2Key3"
-            android:paddingRight="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -389,7 +382,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -415,8 +408,8 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord2Key4"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
+
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -439,7 +432,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -496,8 +489,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord3Key1"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <Button
                 android:id="@+id/Chord3Button1"
@@ -506,7 +498,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -532,8 +524,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord3Key2"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -556,7 +547,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -582,8 +573,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord3Key3"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -606,7 +596,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -632,8 +622,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord3Key4"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -656,7 +645,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -713,8 +702,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord4Key1"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <Button
                 android:id="@+id/Chord4Button1"
@@ -723,7 +711,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -749,8 +737,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord4Key2"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -773,7 +760,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 style="?android:attr/borderlessButtonStyle"
                 />
@@ -799,8 +786,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord4Key3"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -823,7 +809,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -849,8 +835,7 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord4Key4"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -873,7 +858,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:onClick="chordClick"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 />
@@ -942,8 +927,8 @@
             android:background="@drawable/chord_button"
             android:id="@+id/Chord5Key1"
             android:orientation="horizontal"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
+
             android:weightSum="1">
             <Spinner
                 android:id="@+id/CustomChordButton1"
@@ -976,8 +961,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord5Key2"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -999,7 +983,7 @@
                 android:layout_weight=".8"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 />
             <LinearLayout
@@ -1024,8 +1008,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord5Key3"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -1047,7 +1030,7 @@
                 android:layout_weight=".8"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 />
             <LinearLayout
@@ -1072,8 +1055,7 @@
             android:background="@drawable/chord_button"
             android:orientation="horizontal"
             android:id="@+id/Chord5Key4"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
+            android:padding="0dp"
             android:weightSum="1">
             <LinearLayout
                 android:layout_width="0dp"
@@ -1095,7 +1077,7 @@
                 android:layout_weight=".9"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:textSize="36sp"
+                android:textSize="33sp"
                 android:textAllCaps="false"
                 />
         </LinearLayout>
