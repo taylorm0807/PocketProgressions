@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         for(int a = 0; a < 3; a++){
             int noteIndex = startIndex + (a*2);
             if(noteIndex >= notes.length)
-                noteIndex -= (notes.length - 1);
+                noteIndex -= (notes.length);
             triad.add(notes[noteIndex]);
         }
     }

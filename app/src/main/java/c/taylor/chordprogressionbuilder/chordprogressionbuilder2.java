@@ -434,7 +434,7 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         for(int a = 0; a < chordSize; a++){
             int noteIndex = startIndex + (a*2);
             if(noteIndex >= notes.length)
-                noteIndex -= (notes.length - 1);
+                noteIndex -= (notes.length);
             currentChord.add(notes[noteIndex]);
         }
     }
@@ -496,7 +496,8 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
         soundIDsPlaying = new ArrayList<>();
         //Go through the triad created for the chord and plays each note together
         for (int a = 0; a < tempTriad.size(); a++) {
-            soundIDsPlaying.add(soundPool.play(Sounds.get(tempTriad.get(a).toUpperCase()), 1, 1, 1, 0, 1));
+            String noteName = tempTriad.get(a).substring(0,1).toUpperCase() + tempTriad.get(a).substring(1);
+            soundIDsPlaying.add(soundPool.play(Sounds.get(noteName), 1, 1, 1, 0, 1));
         }
         index++;
         if(index > 4) {
@@ -507,8 +508,8 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
 
     //This method stops all of the sounds going on, to prevent chords from bleeding over each other
     public void stopSounds(){
-        for(int i  = 0 ; i < soundIDsPlaying.size(); i++){
-            soundPool.stop(soundIDsPlaying.get(i));
+        for(int i  = 0 ; i < 34; i++){
+            soundPool.stop(i);
         }
     }
 
