@@ -10,6 +10,8 @@
     <string name="common_progressions">Common Progressions:</string>
     <string name="custom_progressions">Custom Progression:</string>
     <string name="customize_chord">Customize Chord</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
 
 
     <string-array name="keys">
