@@ -12,11 +12,16 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.os.Debug;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.style.TextAppearanceSpan;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,6 +38,12 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.io.Console;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +51,7 @@ import java.util.Map;
 
 public class chordprogressionbuilder2 extends AppCompatActivity {
 
+    private static String FILENAME = "STORED_PROGRESSION";
     private Button[][] chordButtons = new Button[4][4];
     private Spinner[] customProgression = new Spinner[4];
     private chordQueue[] commonProgQueues = new chordQueue[4];
@@ -69,6 +81,9 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     private ArrayList<Integer> soundIDsPlaying = new ArrayList<>();
     private int delay;
     private boolean loaded = false;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,8 +167,40 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                 });
             }
         }
+        dl = (DrawerLayout)findViewById(R.id.activity_main);
+        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        nv = (NavigationView)findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+                    case R.id.saved_progressions:
+                        openStoredProgressions();
+                        break;
+                    case R.id.progression_builder:
+                        changeActivity();
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Toast.makeText(chordprogressionbuilder2.this, "Test", Toast.LENGTH_LONG).show();
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
 
     //Fills in the 4 common progressions for the given key
     public void loadCommonProgressions(){
@@ -200,6 +247,13 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
     //This is called when the return button is called, and opens the first screen where you pick a key
     public void changeActivity(){
         Intent intent = new Intent(this, MainActivity.class);
+        soundPool.release();
+        startActivity(intent);
+    }
+
+    public void openStoredProgressions(){
+        stopSounds();
+        Intent intent = new Intent(this, storedprogressions.class);
         soundPool.release();
         startActivity(intent);
     }
@@ -526,6 +580,55 @@ public class chordprogressionbuilder2 extends AppCompatActivity {
                 return notes[i];
         }
         return null;
+    }
+
+    //called when a save button is pressed, adds progression to file to store it
+    public void saveProgression(View v){
+        FileOutputStream storedProgressions = getFileOutputStream();
+        if(storedProgressions != null){
+            for(int i = 0; i < 4; i++){
+                if(downloadButtons[i].getId() == v.getId())
+                    progressionIndex = i;
+            }
+            try {
+                String space = " ";
+                for (int a = 0; a < 4; a++) {
+                    tempTriad = commonProgQueues[progressionIndex].getChord(a);
+                    storedProgressions.write(tempTriad.size());
+                    for (int j = 0; j < tempTriad.size(); j++) {
+                        storedProgressions.write(tempTriad.get(j).getBytes());
+                        storedProgressions.write(space.getBytes());
+                    }
+                }
+            }
+            catch(IOException e){
+                Toast.makeText(this, "Can't write to file", Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+            Toast.makeText(this, storedProgressions.toString(), Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Couldn't find file", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    //create file if not existed, otherwise retrieve it
+    public FileOutputStream getFileOutputStream(){
+        try {
+            return openFileOutput(FILENAME, MODE_APPEND);
+        } catch (FileNotFoundException e1) {
+            File file = new File(getFilesDir(), FILENAME);
+            try {
+                return openFileOutput(FILENAME, MODE_APPEND);
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
+    public void saveCustomProgression(){
+
     }
 
     @Override

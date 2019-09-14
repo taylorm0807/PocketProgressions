@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">ChordProgressionBuilder</string>
-    <string name="minor_key">Minor Key</string>
+    <string name="minor_key">Minor</string>
     <string name="create_key">Generate</string>
     <string name="next_page">Continue</string>
-    <string name="key_generator">Key Generator</string>
+    <string name="key_generator">Generate Key</string>
     <string name="chord_info">Selected Chord Info:</string>
     <string name="progression_builder">Progression Builder</string>
     <string name="bpm">BPM</string>
     <string name="common_progressions">Common Progressions:</string>
     <string name="custom_progressions">Custom Progression:</string>
+    <string name="stored_progressions">Stored Progressions</string>
     <string name="customize_chord">Customize Chord</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>

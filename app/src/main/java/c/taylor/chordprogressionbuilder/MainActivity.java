@@ -4,13 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
+import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,10 +22,8 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> triad = new ArrayList<>();
     private boolean isMinor;
     ArrayAdapter<CharSequence> adapter;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +112,41 @@ public class MainActivity extends AppCompatActivity {
                 openNextActivity();
             }
         });
+
+        dl = (DrawerLayout)findViewById(R.id.activity_main);
+        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        nv = (NavigationView)findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+                    case R.id.saved_progressions:
+                        openStoredProgressions();
+                        break;
+                    case R.id.progression_builder:
+                        reloadPage();
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Toast.makeText(MainActivity.this, "Test", Toast.LENGTH_LONG).show();
+        if(t.onOptionsItemSelected(item))
+            return true;
+        return super.onOptionsItemSelected(item);
     }
 
     //This helper method takes a note like C4 and returns C, to make it more user-friendly
@@ -138,6 +178,20 @@ public class MainActivity extends AppCompatActivity {
             soundPool.release();
             startActivity(intent);
         }
+    }
+
+    public void openStoredProgressions(){
+        stopSounds();
+        Intent intent = new Intent(this, storedprogressions.class);
+        soundPool.release();
+        startActivity(intent);
+    }
+
+    public void reloadPage(){
+        stopSounds();
+        Intent intent = new Intent(this, MainActivity.class);
+        soundPool.release();
+        startActivity(intent);
     }
 
     //This method finds the ID of the button that was pressed and passes it to the method that plays the chord
